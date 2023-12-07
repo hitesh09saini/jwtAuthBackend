@@ -5,12 +5,21 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 const app = express();
+const corsOpts = {
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+    methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
+    allowedHeaders: ['Content-Type'],
+    exposedHeaders: ['Content-Type']
+};
 
-// Middleware
-app.use(cors({
+/*{
     origin: [process.env.CLIENT_URL],
     credentials: true
-}));
+} */
+
+// Middleware
+app.use(cors(corsOpts));
 
 app.use(express.json());
 app.use(cookieParser());
