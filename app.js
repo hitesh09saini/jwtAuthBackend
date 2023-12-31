@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const authRouter = require('./router/authRoute');
 const databaseConnect = require('./config/databaseConfig');
@@ -20,7 +21,6 @@ const corsOpts = {
 
 // Middleware
 app.use(cors(corsOpts));
-
 app.use(express.json());
 app.use(cookieParser());
 
